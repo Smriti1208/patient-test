@@ -27,7 +27,7 @@ A simple, frontend-only patient registration system built with React, TypeScript
 
 1. **Clone the repo**
    ```bash
-   git clone https://github.com/nikhilkumar160901/patient-registration-app.git
+   git clone https://github.com/Smriti1208/patient-test
    cd patient-registration-app
    npm install
    npm run dev
@@ -36,21 +36,13 @@ Test multi-tab support
 - Open multiple browser tabs
 - Register a patient in one tab
 - See the new entry instantly appear in the others
-   
-
----
-
-## ❗ Known Limitations
-- No backend or authentication
-- Data is per-browser only (no cross-device sync)
 
 ---
 
 ## ⚠️ Challenges Faced
 
-- **Persistence with PGlite:** Data did not persist across refreshes initially due to using `DROP TABLE IF EXISTS` on every load. Fix: Removed table drop and used `CREATE TABLE IF NOT EXISTS`.
+- Pglite Integration: Adapting SQLite-like behavior to work seamlessly within the browser required ensuring async data handling and correct schema initialization.
 
-- **Multi-tab sync issues:** While using a shared DB instance (`db`), other tabs fetched stale data. Solution: Each tab now re-initializes its own `PGlite` instance before querying.
+- Data Persistence: Making sure IndexedDB-backed storage retained records accurately across refreshes and tabs involved careful state management.
 
-- **BroadcastChannel edge cases:** The `BroadcastChannel` was closed too early or shared incorrectly across components, which caused silent failures. Fix: Created per-component channels and handled cleanup properly.
-
+- Multi-Tab State Consistency: Implementing real-time updates across tabs without backend communication was handled via BroadcastChannel.
