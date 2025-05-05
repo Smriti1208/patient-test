@@ -34,7 +34,7 @@ export default function PatientForm({ onRegister }: { onRegister: () => void }) 
                 <option value="Female">Female</option>
                 <option value="Other">Other</option>
             </select>
-            <input name="contact" value={form.contact} maxLength={10} minLength={10} onChange={handleChange} placeholder="Contact" />
+            <input name="contact" value={form.contact} maxLength={10} minLength={10} onChange={handleChange} placeholder="Contact" required />
             <button type="submit">Register</button>
         </form>
         
